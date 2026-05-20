@@ -1,503 +1,865 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-5BB8W2X');</script> <!-- End Google Tag Manager -->
-  <link rel="icon" type="image/png" href="/favicon.png"/>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rajat Tiwari — Founder's Office</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f8f7f4;
+  --bg2:#f0ede6;
+  --bg3:#e8e4db;
+  --white:#ffffff;
+  --ink:#17161a;
+  --ink2:#3d3b42;
+  --ink3:#7a7880;
+  --ink4:#b0adb8;
+  --gold:#c9841a;
+  --gold-bg:rgba(201,132,26,.08);
+  --gold-border:rgba(201,132,26,.2);
+  --teal:#0f7b72;
+  --teal-bg:rgba(15,123,114,.07);
+  --red:#c0392b;
+  --border:#dddad3;
+  --border2:#ccc9c0;
+  --shadow:0 1px 3px rgba(0,0,0,.06),0 4px 16px rgba(0,0,0,.06);
+  --shadow2:0 2px 8px rgba(0,0,0,.08),0 12px 40px rgba(0,0,0,.08);
+  --r:10px;
+  --r2:16px;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:'Geist',sans-serif;font-size:15px;line-height:1.65;overflow-x:hidden}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--border2)}
 
-  <title>Personal Portfolio</title>
-  <meta content="" name="descriptison">
-  <meta content="" name="keywords">
+/* ── NAV ── */
+#nav{position:fixed;top:0;left:0;right:0;z-index:900;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 40px;background:rgba(248,247,244,.92);backdrop-filter:blur(16px);border-bottom:1px solid transparent;transition:border-color .3s}
+#nav.stuck{border-bottom-color:var(--border)}
+.nav-logo{font-family:'Instrument Serif',serif;font-size:20px;color:var(--ink);text-decoration:none;letter-spacing:-.01em}
+.nav-logo b{color:var(--gold)}
+.nav-links{display:flex;gap:4px;list-style:none}
+.nav-links a{text-decoration:none;font-size:13px;font-weight:500;color:var(--ink3);padding:5px 12px;border-radius:6px;transition:all .2s}
+.nav-links a:hover{background:var(--bg2);color:var(--ink)}
+.nav-cta{background:var(--ink);color:#fff;font-size:13px;font-weight:600;padding:8px 18px;border-radius:8px;text-decoration:none;transition:all .2s}
+.nav-cta:hover{background:var(--gold)}
+.ham{display:none;flex-direction:column;gap:4px;cursor:pointer}
+.ham span{display:block;width:20px;height:1.5px;background:var(--ink);transition:.3s}
+.mob{display:none;position:fixed;top:60px;left:0;right:0;background:var(--white);border-bottom:1px solid var(--border);padding:16px 24px 24px;z-index:899;flex-direction:column;gap:2px}
+.mob.on{display:flex}
+.mob a{text-decoration:none;font-size:14px;font-weight:500;color:var(--ink2);padding:10px 12px;border-radius:6px;transition:background .2s}
+.mob a:hover{background:var(--bg2)}
+.mob .mob-cta{background:var(--ink);color:#fff;text-align:center;margin-top:8px;border-radius:8px}
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+/* ── HERO ── */
+#hero{min-height:100vh;display:flex;align-items:center;padding:100px 40px 80px;background:var(--white)}
+.hero-wrap{max-width:1140px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 440px;gap:80px;align-items:center}
 
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
-  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+/* LEFT */
+.hero-eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:28px;animation:up .6s both}
+.avail-dot{width:8px;height:8px;background:#22c55e;border-radius:50%;box-shadow:0 0 0 3px rgba(34,197,94,.15);animation:pulse2 2s infinite}
+@keyframes pulse2{0%,100%{box-shadow:0 0 0 3px rgba(34,197,94,.15)}50%{box-shadow:0 0 0 6px rgba(34,197,94,.05)}}
+.avail-text{font-size:12px;font-weight:600;color:var(--ink3);letter-spacing:.04em}
 
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
+.hero-name{font-family:'Instrument Serif',serif;font-size:clamp(52px,7vw,80px);line-height:.95;letter-spacing:-.03em;color:var(--ink);margin-bottom:6px;animation:up .6s .08s both}
+.hero-name .italic{font-style:italic;color:var(--gold)}
+.hero-title{font-size:14px;font-weight:500;color:var(--ink3);letter-spacing:.02em;margin-bottom:28px;animation:up .6s .16s both}
 
+.hero-desc{font-size:16px;color:var(--ink2);line-height:1.75;max-width:460px;margin-bottom:32px;animation:up .6s .24s both}
+.hero-desc strong{color:var(--ink);font-weight:600}
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-169007209-3"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'UA-169007209-3');
-  </script>
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:36px;animation:up .6s .32s both}
+.htag{font-size:12px;font-weight:500;color:var(--ink3);background:var(--bg);border:1px solid var(--border);padding:5px 12px;border-radius:6px}
+
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;animation:up .6s .4s both}
+.btn-a{background:var(--ink);color:#fff;font-size:14px;font-weight:600;padding:12px 24px;border-radius:8px;text-decoration:none;transition:all .2s}
+.btn-a:hover{background:var(--gold);transform:translateY(-1px)}
+.btn-b{background:transparent;border:1.5px solid var(--border2);color:var(--ink2);font-size:14px;font-weight:500;padding:12px 24px;border-radius:8px;text-decoration:none;transition:all .2s}
+.btn-b:hover{border-color:var(--ink);color:var(--ink)}
+
+/* RIGHT — Profile card */
+.profile-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r2);box-shadow:var(--shadow2);overflow:hidden;animation:up .6s .2s both}
+.profile-avatar{
+  width:100%;height:220px;
+  background:linear-gradient(135deg,#1a1a2e 0%,#16213e 40%,#0f3460 100%);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.profile-avatar::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 60% 40%,rgba(201,132,26,.25),transparent 60%)}
+.avatar-initials{
+  font-family:'Instrument Serif',serif;font-size:64px;color:rgba(255,255,255,.9);
+  letter-spacing:-.03em;position:relative;z-index:1;
+  text-shadow:0 2px 20px rgba(0,0,0,.3);
+}
+.avatar-ring{
+  position:absolute;bottom:-20px;right:-20px;
+  width:120px;height:120px;border-radius:50%;
+  border:1px solid rgba(201,132,26,.25);
+}
+.avatar-ring2{
+  position:absolute;top:-30px;left:-30px;
+  width:100px;height:100px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.06);
+}
+.profile-body{padding:24px}
+.profile-name{font-family:'Instrument Serif',serif;font-size:22px;letter-spacing:-.02em;margin-bottom:2px}
+.profile-role{font-size:12px;font-weight:500;color:var(--gold);letter-spacing:.04em;margin-bottom:20px}
+.profile-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:20px}
+.pstat{background:var(--bg);padding:12px 8px;text-align:center}
+.pstat-n{font-family:'Instrument Serif',serif;font-size:22px;color:var(--ink);line-height:1}
+.pstat-l{font-size:10px;font-weight:500;color:var(--ink4);text-transform:uppercase;letter-spacing:.05em;margin-top:3px}
+.profile-contacts{display:flex;flex-direction:column;gap:8px}
+.pc{display:flex;align-items:center;gap:10px;text-decoration:none;font-size:12px;color:var(--ink3);padding:9px 12px;border:1px solid var(--border);border-radius:7px;transition:all .2s}
+.pc:hover{border-color:var(--gold);color:var(--gold);background:var(--gold-bg)}
+.pc-icon{width:24px;height:24px;background:var(--bg2);border-radius:5px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+/* SVG icons */
+.ico-svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+@keyframes up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── SHARED ── */
+.section{padding:80px 40px}
+.wrap{max-width:1140px;margin:0 auto;width:100%}
+.stag{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.stag::before{content:'';width:16px;height:2px;background:var(--gold);border-radius:1px;flex-shrink:0}
+.sh2{font-family:'Instrument Serif',serif;font-size:clamp(28px,3.5vw,40px);letter-spacing:-.025em;line-height:1.1;margin-bottom:40px;color:var(--ink)}
+.sh2 em{font-style:italic;color:var(--ink3)}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .5s,transform .5s}
+.reveal.on{opacity:1;transform:translateY(0)}
+
+/* ── EXPERIENCE ── */
+#experience{background:var(--bg)}
+.exp-list{display:flex;flex-direction:column;gap:2px}
+.exp-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;transition:box-shadow .2s}
+.exp-card:hover{box-shadow:var(--shadow)}
+.exp-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;padding:24px 28px;cursor:pointer;user-select:none}
+.exp-left{display:flex;gap:16px;align-items:flex-start}
+.exp-logo{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:20px;border:1px solid var(--border)}
+.exp-logo.vetic{background:#e8f5e9}
+.exp-logo.snap{background:#fff3e0}
+.exp-logo.tata{background:#fce4ec}
+.exp-logo.intern{background:#e8eaf6}
+.exp-co{font-size:17px;font-weight:700;letter-spacing:-.02em;color:var(--ink);margin-bottom:3px}
+.exp-role{font-size:13px;font-weight:500;color:var(--ink3);margin-bottom:10px;line-height:1.4}
+.exp-badges{display:flex;flex-wrap:wrap;gap:6px}
+.ebadge{font-size:11px;font-weight:600;padding:3px 9px;border-radius:5px}
+.ebadge-dur{background:var(--gold-bg);color:var(--gold);border:1px solid var(--gold-border)}
+.ebadge-type{background:var(--bg2);color:var(--ink3);border:1px solid var(--border)}
+.ebadge-curr{background:rgba(34,197,94,.08);color:#16a34a;border:1px solid rgba(34,197,94,.2)}
+.exp-toggle{width:32px;height:32px;border:1.5px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:4px;transition:all .25s;color:var(--ink3)}
+.exp-card.open .exp-toggle{background:var(--ink);border-color:var(--ink);color:#fff;transform:rotate(45deg)}
+.exp-body{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.exp-body-inner{padding:0 28px 24px;border-top:1px solid var(--border)}
+.exp-pts{list-style:none;margin-top:18px;display:flex;flex-direction:column;gap:10px}
+.exp-pts li{display:flex;gap:10px;font-size:13px;color:var(--ink2);line-height:1.65}
+.exp-pts li::before{content:'—';color:var(--ink4);flex-shrink:0;margin-top:2px}
+.exp-award{display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:12px;font-weight:600;color:var(--gold);background:var(--gold-bg);border:1px solid var(--gold-border);padding:6px 12px;border-radius:7px}
+.exp-card.open .exp-body{max-height:1000px}
+
+/* ── IMPACT ── */
+#impact{background:var(--white)}
+.imp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.imp-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--r);padding:28px 24px;transition:all .25s}
+.imp-card:hover{background:var(--white);box-shadow:var(--shadow);transform:translateY(-2px)}
+.imp-n{font-family:'Instrument Serif',serif;font-size:42px;color:var(--ink);line-height:1;margin-bottom:10px}
+.imp-n span{color:var(--gold)}
+.imp-t{font-size:14px;font-weight:600;letter-spacing:-.01em;margin-bottom:6px}
+.imp-d{font-size:12px;color:var(--ink3);line-height:1.6}
+.imp-s{margin-top:14px;font-size:11px;font-weight:600;color:var(--ink4);text-transform:uppercase;letter-spacing:.06em}
+
+/* ── SKILLS ── */
+#skills{background:var(--bg)}
+.sk-groups{display:flex;flex-direction:column;gap:32px}
+.sk-g-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--ink3);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.sk-g-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.sk-pills{display:flex;flex-wrap:wrap;gap:8px}
+.pill{font-size:13px;font-weight:500;color:var(--ink2);background:var(--white);border:1px solid var(--border);padding:7px 16px;border-radius:7px;transition:all .2s;cursor:default}
+.pill:hover{border-color:var(--gold);color:var(--gold);background:var(--gold-bg);transform:translateY(-1px)}
+
+/* ── EDUCATION ── */
+#education{background:var(--white)}
+.edu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.edu-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--r);padding:28px 24px;transition:all .25s}
+.edu-card:hover{background:var(--white);box-shadow:var(--shadow)}
+.edu-yr{font-family:'Instrument Serif',serif;font-size:32px;color:var(--ink4);line-height:1;margin-bottom:14px}
+.edu-deg{font-size:15px;font-weight:700;letter-spacing:-.01em;margin-bottom:6px}
+.edu-inst{font-size:12px;color:var(--ink3);line-height:1.55;margin-bottom:16px}
+.edu-score{font-family:'Instrument Serif',serif;font-size:26px;color:var(--ink);line-height:1}
+.edu-badge{display:inline-block;margin-top:8px;font-size:11px;font-weight:600;padding:4px 10px;border-radius:6px;background:var(--teal-bg);border:1px solid rgba(15,123,114,.2);color:var(--teal)}
+
+.cert-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:40px}
+.cert{display:flex;align-items:flex-start;gap:14px;background:var(--bg);border:1px solid var(--border);border-radius:var(--r);padding:20px;transition:all .25s}
+.cert:hover{background:var(--white);box-shadow:var(--shadow)}
+.cert-ico{width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;background:var(--white);border:1px solid var(--border)}
+.cert-n{font-size:14px;font-weight:600;letter-spacing:-.01em;margin-bottom:3px}
+.cert-yr{font-size:11px;color:var(--ink4);font-weight:500}
+
+/* ── PROJECTS ── */
+#projects{background:var(--bg)}
+.proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.proj-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:28px;transition:all .25s;position:relative;overflow:hidden}
+.proj-card::after{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--border2);transition:background .25s}
+.proj-card:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
+.proj-card:hover::after{background:var(--gold)}
+.proj-tag{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:var(--teal);background:var(--teal-bg);border:1px solid rgba(15,123,114,.15);padding:4px 10px;border-radius:6px;margin-bottom:14px;letter-spacing:.03em}
+.proj-n{font-size:16px;font-weight:700;letter-spacing:-.02em;margin-bottom:10px}
+.proj-d{font-size:13px;color:var(--ink3);line-height:1.7}
+
+/* ── LEADERSHIP ── */
+#leadership{background:var(--white)}
+.lead-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.lead-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--r);padding:24px;transition:all .25s}
+.lead-card:hover{background:var(--white);box-shadow:var(--shadow)}
+.lead-top{display:flex;align-items:flex-start;gap:14px;margin-bottom:14px}
+.lead-ico{width:42px;height:42px;border-radius:9px;background:var(--white);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0}
+.lead-role{font-size:15px;font-weight:700;letter-spacing:-.01em;margin-bottom:2px}
+.lead-org{font-size:12px;color:var(--gold);font-weight:600}
+.lead-pts{list-style:none;display:flex;flex-direction:column;gap:7px}
+.lead-pts li{font-size:12px;color:var(--ink3);padding-left:14px;position:relative;line-height:1.55}
+.lead-pts li::before{content:'·';position:absolute;left:0;color:var(--ink4);font-size:16px;top:-2px}
+.lead-yr{margin-top:14px;font-size:11px;font-weight:600;color:var(--ink4);letter-spacing:.05em;text-transform:uppercase}
+
+/* ── FOOTER ── */
+footer{background:var(--ink);color:rgba(255,255,255,.85);padding:64px 40px 40px}
+.footer-wrap{max-width:1140px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:1fr auto;gap:60px;align-items:start;margin-bottom:48px}
+.footer-n{font-family:'Instrument Serif',serif;font-size:40px;line-height:1;letter-spacing:-.03em;margin-bottom:6px}
+.footer-n span{font-style:italic;color:var(--gold)}
+.footer-sub{font-size:13px;color:rgba(255,255,255,.4);margin-bottom:24px}
+.footer-links{display:flex;flex-direction:column;gap:8px}
+.flink{display:flex;align-items:center;gap:10px;text-decoration:none;font-size:13px;color:rgba(255,255,255,.5);padding:9px 14px;border:1px solid rgba(255,255,255,.08);border-radius:8px;transition:all .2s}
+.flink:hover{color:var(--gold);border-color:rgba(201,132,26,.3);background:rgba(201,132,26,.06)}
+.flink-ico{width:28px;height:28px;background:rgba(255,255,255,.06);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.footer-right{display:flex;flex-direction:column;gap:14px;align-items:flex-end}
+.footer-right p{font-size:13px;color:rgba(255,255,255,.35);text-align:right;line-height:1.6}
+.footer-btn{background:var(--gold);color:var(--ink);font-size:14px;font-weight:700;padding:12px 24px;border-radius:8px;text-decoration:none;transition:all .2s;display:inline-block}
+.footer-btn:hover{background:#e09820;transform:translateY(-1px)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.footer-bottom p{font-size:11px;color:rgba(255,255,255,.2)}
+
+/* ── MARQUEE ── */
+.mq{background:var(--ink);padding:12px 0;overflow:hidden}
+.mq-track{display:flex;white-space:nowrap;animation:scroll 25s linear infinite}
+.mq-item{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);padding:0 24px;display:flex;align-items:center;gap:16px}
+.mq-item::after{content:'◆';font-size:6px;color:var(--gold);opacity:.7}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .hero-wrap{grid-template-columns:1fr;gap:40px}
+  .profile-card{max-width:420px}
+  .imp-grid{grid-template-columns:repeat(2,1fr)}
+  .edu-grid{grid-template-columns:1fr 1fr}
+  .lead-grid{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  #nav{padding:0 20px}
+  .nav-links,.nav-cta{display:none}
+  .ham{display:flex}
+  .section,.footer{padding:60px 20px}
+  #hero{padding:80px 20px 60px}
+  .imp-grid{grid-template-columns:1fr}
+  .proj-grid{grid-template-columns:1fr}
+  .edu-grid{grid-template-columns:1fr}
+  .cert-grid{grid-template-columns:1fr}
+  .lead-grid{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr}
+  .footer-right{align-items:flex-start}
+  .footer-right p{text-align:left}
+  footer{padding:48px 20px 32px}
+  .exp-head{padding:18px}
+  .exp-body-inner{padding:0 18px 20px}
+}
+</style>
 </head>
 <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5BB8W2X"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    <!-- ======= Header ======= -->
-    <header id="header" class="header-tops">
-  
-      <div class="container">
-  
-        <h1><a href="index.html">Rajat Tiwari</a></h1>
-        <h2 style="color:#fff">I'm <span class="typing" style="color:#12D640"></span></h2>
-        <nav class="nav-menu d-none d-lg-block">
-          <ul>
-            <li class="active"><a href="#header"> <span>Home</span></a></li>
-            <li><a href="#about"><span>About</span></a></li>
-            <li><a href="#education"> <span>Education</span></a></li>
-            <li><a href="#skills"> <span>Skills</span></a></li>
-            <li><a href="https://drive.google.com/file/d/1dkuvqK8D1ZB8YkUKkuihGrSC34APPk-N/view?usp=sharing" target="_blank"> <span>Resume</span></a></li>
-            <!-- <li><a href="#links"> <span>Resume & Links</span></a></li> -->
-            <li><a href="#contacts"> <span>Contact</span></a></li>
-  
-          </ul>
-        </nav><!-- .nav-menu -->
-  
-        <div class="social-links">
-            <a href="https://www.linkedin.com/in/rajattiwari01" target="_blank" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-            <a href="https://www.github.com/rajattiwari01" target="_blank" class="github"><i class="bx bxl-github"></i></a>
-            <a href="mailto:rajattiwari785@gmail.com" target="_blank" class="google"><i class="bx bxl-google"></i></a>
-  
-        </div>
-  
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="nav-logo" href="#hero">Rajat <b>Tiwari</b></a>
+  <ul class="nav-links">
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#impact">Impact</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#leadership">Leadership</a></li>
+  </ul>
+  <a class="nav-cta" href="mailto:rajattiwari785@gmail.com">Hire Me</a>
+  <div class="ham" id="ham"><span></span><span></span><span></span></div>
+</nav>
+<div class="mob" id="mob">
+  <a href="#experience" onclick="cm()">Experience</a>
+  <a href="#impact" onclick="cm()">Impact</a>
+  <a href="#skills" onclick="cm()">Skills</a>
+  <a href="#education" onclick="cm()">Education</a>
+  <a href="#projects" onclick="cm()">Projects</a>
+  <a href="#leadership" onclick="cm()">Leadership</a>
+  <a href="mailto:rajattiwari785@gmail.com" class="mob-cta" onclick="cm()">Hire Me →</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-wrap">
+    <!-- LEFT -->
+    <div>
+      <div class="hero-eyebrow">
+        <span class="avail-dot"></span>
+        <span class="avail-text">Available for Opportunities · New Delhi, India</span>
       </div>
-    </header><!-- End Header -->
-    <!-- ======= About Section ======= -->
-    <section id="about" class="about">
-      <!-- ======= About Me ======= -->
-      <div class="about-me container">
-        <div class="section-title">
-          <h2>About</h2>
+
+      <h1 class="hero-name">Rajat<br><span class="italic">Tiwari</span></h1>
+      <p class="hero-title">Lead Program Manager &nbsp;·&nbsp; Founder's Office &nbsp;·&nbsp; CX &amp; Growth Strategy</p>
+
+      <p class="hero-desc">
+        <strong>42 months</strong> of driving customer experience, clinic operations, and growth strategy at fast-scaling startups — from <strong>TATA 1mg</strong> to <strong>Snapdeal</strong> to <strong>Vetic</strong>.
+        I build systems, lead teams, and deliver measurable results.
+      </p>
+
+      <div class="hero-tags">
+        <span class="htag">Program Management</span>
+        <span class="htag">Process Excellence</span>
+        <span class="htag">CX &amp; NPS</span>
+        <span class="htag">AI-Enabled Projects</span>
+        <span class="htag">B.Tech ECE · Rank #1</span>
+        <span class="htag">NPTEL Gold Medalist</span>
+      </div>
+
+      <div class="hero-btns">
+        <a class="btn-a" href="mailto:rajattiwari785@gmail.com">Get in Touch</a>
+        <a class="btn-b" href="#experience">View Experience ↓</a>
+      </div>
+    </div>
+
+    <!-- RIGHT — Profile Card -->
+    <div class="profile-card">
+      <div class="profile-avatar">
+        <div class="avatar-ring"></div>
+        <div class="avatar-ring2"></div>
+        <div class="avatar-initials">RT</div>
+      </div>
+      <div class="profile-body">
+        <div class="profile-name">Rajat Tiwari</div>
+        <div class="profile-role">LEAD PROGRAM MANAGER · FOUNDER'S OFFICE</div>
+
+        <div class="profile-stats">
+          <div class="pstat"><div class="pstat-n">42</div><div class="pstat-l">Months Exp.</div></div>
+          <div class="pstat"><div class="pstat-n">65+</div><div class="pstat-l">Clinics Ops</div></div>
+          <div class="pstat"><div class="pstat-n">₹4Cr</div><div class="pstat-l">Revenue</div></div>
         </div>
-  
-        <div class="row">
-          <div class="col-lg-4" data-aos="fade-right">
-            <img src="assets/img/profile.jpeg" class="img-fluid" alt="">
-          </div>
-          <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
-            <p>Focused and enthusiastic developer with a keen interest in software development and artificial intelligence. By comprehensive exposure
-              to the underlying concepts and applying them vividly to various projects, my love for these domains came into being.
-              I am a passionate individual who thrives to build and apply algorithms to solve real-world industry problems.
-            </p>
-            <div class="row">
-              <div class="col-lg-6">
-                <ul>
-                  <li><i class="icofont-rounded-right"></i> <strong>Birthday:</strong> 24-March-2001</li>
-                  <li><i class="icofont-rounded-right"></i> <strong>Phone:</strong> +91-8273004988</li>
-                </ul>
-              </div>
-              <div class="col-lg-6">
-                <ul>
-                  <li><i class="icofont-rounded-right"></i> <strong>City:</strong> Rudrapur, India</li>
-                  <li><i class="icofont-rounded-right"></i> <strong>Email:</strong> rajattiwari785@gmail.com</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-  
-      </div><!-- End About Me -->
-      <!-- ======= Interests ======= -->
-      <div class="interests container">
-  
-        <div class="section-title">
-          <h2>Interests</h2>
-        </div>
-  
-        <div class="row">
-          <div class="col-lg-3 col-md-4">
-            <div class="icon-box">
-              <i class="ri-global-line" style="color: #ffbb2c;"></i>
-              <h3>Software Development</h3>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
-            <div class="icon-box">
-              <i class="ri-database-2-line" style="color: #5578ff;"></i>
-              <h3>Website Development</h3>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
-            <div class="icon-box">
-              <i class="ri-code-s-slash-fill" style="color: #e80368;"></i>
-              <h3>Data Science</h3>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-4 mt-4 mt-lg-0">
-            <div class="icon-box">
-              <i class="ri-english-input" style="color: #1c7d32;"></i>
-              <h3>Natural Language Processing</h3>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-4 mt-4">
-            <div class="icon-box">
-              <i class="ri-camera-3-line" style="color: #28a745;"></i>
-              <h3>UI/UX Design</h3>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-4 mt-4">
-            <div class="icon-box">
-              <i class="ri-bar-chart-box-line" style="color: #f1081f;"></i>
-              <h3>Machine Learning</h3>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-4 mt-4">
-            <div class="icon-box">
-              <i class="ri-file-list-3-line" style="color: #47aeff;"></i>
-              <h3>Algorithms</h3>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-4 mt-4">
-            <div class="icon-box">
-              <i class="ri-image-line" style="color: #ffc107;"></i>
-              <h3>Image Processing</h3>
-            </div>
-          </div>
-        </div>
-  
-      </div><!-- End Interests -->
-    </section><!-- End About Section -->
-  
-    <!-- ======= Education Section ======= -->
-    <section id="education" class="services">
-      <div class="container">
-        <div class="section-title">
-          <h2>Education</h2>
-        </div>
-        <div class="row">
-          <div class="col-lg-12" data-aos="fade-up" style="display: inline-block;">
-  
-  
-              <div class="col-md-4 mt-4 mt-md-0 icon-box" data-aos="fade-up" data-aos-delay="100" style="padding:0px 0px;padding-bottom: 5px;display: inline-block;">
-                <img src="assets/img/education/btkit.jpeg" class="img-fluid" alt="">
-                <h4 style="text-align:left;"><a href="https://kecua.ac.in/" target="_blank" style="color:#12d640">Bipin Tripathi Kumaon Institutes of Technology</a><br> </h4> 
-                <p style="text-align:left;color:#fff;padding: 5px 10px;"><em>B.Tech. in  Electronics and Communication</em></p>
-                <h5 style="text-align:left;padding: 0px 10px;">July 2018 - Present</h5>
-                <h6 style="text-align:left;color:#fff;padding: 0px 10px;">Relevant Coursework</h6>
-                <ul style="text-align:left;color:#fff;">
-                  <li>Data Structures &amp; Algorithms</li>
-                  <li>Database Management Systems</li>
-                  <li>Operating Systems</li>
-                  <li>Algorithms &amp; Optimization for Big Data</li>
-                  <li>Machine Learning</li>
-                  <li>Computer Vision</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-  
-  
-      <div class="portfolio">
-      <div class="container">
-        <div class="section-title">
-          <h2>Online Certification</h2>
-        </div>
-  
-        <div class="row portfolio-container" style="position: relative; height: 437.75px;">
-  
-           <div class="col-lg-4 col-md-6 portfolio-item filter-app" style="position: absolute; left: 0px; top: 0px;">
-            <div class="portfolio-wrap">
-              <img src="assets/img/certification/JAVA - Basic Certification.png" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Hackerrank - Java(Basic)</h4>
-                <div class="portfolio-links">
-                  <a href="https://www.hackerrank.com/certificates/c134a51637a4" target="_blank" title="Certificate"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-             </div>
-            </div>
-  
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app" style="position: absolute; left: 370px; top: 0px;">
-            <div class="portfolio-wrap">
-              <img src="assets/img/certification/JAVA - Basic Certification (1).png" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Hackerrank - Java(Intermediate)</h4>
-                <div class="portfolio-links">
-                  <a href="https://www.hackerrank.com/certificates/b686d5cf13a6" target="_blank" title="Certificate"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app" style="position: absolute; left: 740px; top: 0px;">
-            <div class="portfolio-wrap">
-              <img src="assets/img/certification/JAVA - Basic Certification (2).png" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Hackerrank - C++(Basic)</h4>
-                <div class="portfolio-links">
-                  <a href="https://www.hackerrank.com/certificates/2c8ab675cdef" target="_blank" title="Certificate"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-          <div class="col-lg-4 col-md-6 portfolio-item filter-project" style="position: absolute; left: 0px; top: 218.875px;">
-            <div class="portfolio-wrap">
-              <img src="assets/img/certification/ict.png" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>ICT - Core-Java (IIT Kanpur)</h4>
-                <div class="portfolio-links">
-                  <a href="https://drive.google.com/file/d/1X5w9U09BuB2xSDpatciHqntBsOQaiPC1/view?usp=sharing" target="_blank" title="Certificate"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-          <div class="col-lg-4 col-md-6 portfolio-item filter-project" style="position: absolute; left: 370px; top: 218.875px;">
-            <div class="portfolio-wrap">
-              <img src="assets/img/certification/dai.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Programming for Everybody (Getting Started with Python)</h4>
-                <div class="portfolio-links">
-                  <a href="https://coursera.org/share/fa6c7d4d46728617d6b93378825d2603" target="_blank" title="Certificate"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-  
-          <div class="col-lg-4 col-md-6 portfolio-item filter-project" style="position: absolute; left: 740px; top: 218.875px;">
-            <div class="portfolio-wrap">
-              <img src="assets/img/certification/ibm.jpg" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>Python for Data Science, AI & Development</h4>
-                <div class="portfolio-links">
-                  <a href="https://www.coursera.org/account/accomplishments/certificate/ELXZ6FE2BU7X?utm_medium=certificate&amp;utm_source=link&amp;utm_campaign=copybutton_certificate/" target="_blank" title="Certificate"><i class="bx bx-link"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-  
+
+        <div class="profile-contacts">
+          <a class="pc" href="mailto:rajattiwari785@gmail.com">
+            <span class="pc-icon">
+              <svg class="ico-svg" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+            </span>
+            rajattiwari785@gmail.com
+          </a>
+          <a class="pc" href="tel:+918273004988">
+            <span class="pc-icon">
+              <svg class="ico-svg" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.68 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.59 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.06 6.06l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </span>
+            +91-8273004988
+          </a>
+          <a class="pc" href="https://linkedin.com/in/rajattiwari01" target="_blank">
+            <span class="pc-icon">
+              <svg class="ico-svg" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </span>
+            linkedin.com/in/rajattiwari01
+          </a>
         </div>
       </div>
-      </div>
-  
-    </section>
-    <!-- End Education Section -->
-  
-  
-  
-    <!-- Start Experience Section -->
-  
-    <section id="experience" class="services">
-      <div class="container">
-        <div class="section-title">
-          <h2>Experience</h2>
-        </div>
-        <div class="row">
-            <div class="col-lg-12" data-aos="fade-up">
-                <div class="col-md-12 mt-4 mt-md-0 icon-box" data-aos="fade-up" data-aos-delay="100">
-                  <h4 style="text-align:left;"><a href="https://drive.google.com/file/d/1TSw8UK5PhfE1IUny5ffRiwI71wB6QO_R/view?usp=sharing" style="color:#12d640">AI Probably</a><br> </h4>
-                  <h5 style="text-align:left;">July 2021 - October 2021</h5>
-                  <p style="text-align:left;color:#fff"><em>UI Developer</em></p>
-                  <ul style="text-align:left;">
-                    <li>Designed Daily graphic for social media posts and UI of the website with Figma.</li>
-                  </ul>
-                </div>
-                <div class="col-md-12 mt-4 mt-md-0 icon-box" data-aos="fade-up" data-aos-delay="100">
-                  <h4 style="text-align:left;"><a href="https://drive.google.com/file/d/1mDZi8WMyN92k0znpr0rAPjfu5oHAc1vi/view?usp=sharing" target="_blank" style="color:#12d640">Technocolabs Software Pvt. Ltd.</a><br> </h4>
-                  <h5 style="text-align:left;">January 2021 - February 2021</h5>
-                  <p style="text-align:left;color:#fff"><em>Data Science Intern</em></p>
-                  <ul style="text-align:left;">
-                    <li>Integrated Credit card fault Prediction software.</li>
-                    <li>Devised a pipeline of the project to incorporate it into the product of the company. Implemented Restful APIs in Django that enabled our quality Analyst team to increase reporting speed by 46%.</li>
-                    <li>Built a web app to onboard data from the company’s product using Flask, Postgres, and AWS S3, enabling interactive charts.</li>
-                  </ul>
-                </div>
-                <div class="col-md-12 mt-4 mt-md-0 icon-box" data-aos="fade-up" data-aos-delay="100">
-                  <h4 style="text-align:left;"><a href="https://drive.google.com/file/d/1ubkmMX5LZ-yLmLZr3H2bLH1VW6I5o6NO/view?usp=sharing" target="_blank" style="color:#12d640">CSE Department, IIT Hyderabad</a><br> </h4>
-                  <h5 style="text-align:left;">May 2020 - August 2020</h5>
-                  <p style="text-align:left;color:#fff"><em>Research Intern</em></p>
-                  <ul style="text-align:left;">
-                    <b>Topic:  <i>Parallel Programming in Image Segmentation Algorithms</i></b>
-                    <li>Deep Research Comparision on Distributed and Parallel Programming.</li>
-                    <li>Different types of Image Segmentation Algorithms.</li>
-                    <li>Find out the best results in different Algorithms.</li>
-                    <li>Optimized image processing algorithm of object detection by creating customized MASKRCNN  algorithm, increasing accuracy by 15%; trained classification algorithm with the help of triplet loss to learn the image embedding of image, reducing the hassle of collecting data of new iamges. </li>
-                  </ul>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="mq">
+  <div class="mq-track">
+    <span class="mq-item">Program Management</span>
+    <span class="mq-item">Customer Experience</span>
+    <span class="mq-item">Clinic Operations</span>
+    <span class="mq-item">Growth Strategy</span>
+    <span class="mq-item">Process Excellence</span>
+    <span class="mq-item">AI-Enabled Projects</span>
+    <span class="mq-item">Supply Chain</span>
+    <span class="mq-item">Revenue Optimization</span>
+    <span class="mq-item">Founder's Office</span>
+    <span class="mq-item">Program Management</span>
+    <span class="mq-item">Customer Experience</span>
+    <span class="mq-item">Clinic Operations</span>
+    <span class="mq-item">Growth Strategy</span>
+    <span class="mq-item">Process Excellence</span>
+    <span class="mq-item">AI-Enabled Projects</span>
+    <span class="mq-item">Supply Chain</span>
+    <span class="mq-item">Revenue Optimization</span>
+    <span class="mq-item">Founder's Office</span>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<section class="section" id="experience">
+  <div class="wrap">
+    <div class="stag">Work Experience</div>
+    <h2 class="sh2">42 Months of<br><em>Building & Executing</em></h2>
+
+    <div class="exp-list">
+
+      <!-- Vetic -->
+      <div class="exp-card reveal">
+        <div class="exp-head" onclick="tog(this)">
+          <div class="exp-left">
+            <div class="exp-logo vetic">🐾</div>
+            <div>
+              <div class="exp-co">Vetic</div>
+              <div class="exp-role">Lead Program Manager — Customer Experience, Clinic Operations & Strategy (Founder's Office)</div>
+              <div class="exp-badges">
+                <span class="ebadge ebadge-dur">Aug 2025 – Present</span>
+                <span class="ebadge ebadge-curr">● Current Role</span>
+                <span class="ebadge ebadge-type">Founder's Office</span>
               </div>
             </div>
           </div>
-      </div>
-    </section>
-  
-    <!-- End Experience Section -->
-  
-  
-  
-    <!-- Start Skills Section -->
-  
-    <section id="skills" class="services">
-      <div class="container">
-        <div class="section-title">
-          <h2>Skills</h2>
+          <div class="exp-toggle">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </div>
         </div>
-        <div class="row">
-          <div class="col-lg-12" data-aos="fade-up">
-            <div class="col-md-12 mt-4 mt-md-0 icon-box" data-aos="fade-up" data-aos-delay="100" style="background:#fff">
-              <h4 style="text-align:left;color:#09203a">Languages and Databases</h4>
-                  <p style="text-align:left;">
-                    <img src="https://www.vectorlogo.zone/logos/python/python-horizontal.svg" alt="vectorlogo.zone" height="50" width="150">
-                    <img src="https://www.vectorlogo.zone/logos/java/java-horizontal.svg" alt="vectorlogo.zone" height="50" width="120">
-                    <img src="https://www.vectorlogo.zone/logos/w3_html5/w3_html5-ar21.svg" alt="vectorlogo.zone">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg" alt="upload.wikimedia.org" height="60" width="90">
-                    <img src="https://www.vectorlogo.zone/logos/mysql/mysql-horizontal.svg" alt="vectorlogo.zone" height="70" width="130">
-                    <img src="https://www.vectorlogo.zone/logos/postgresql/postgresql-horizontal.svg" alt="vectorlogo.zone" height="50" width="190">
-  
-                  </p>
-              </div>
-              <div class="col-md-12 mt-4 mt-md-0 icon-box" data-aos="lefade-up" data-aos-delay="100" style="background:#fff">
-                <h4 style="text-align:left;color:#09203a">Frameworks</h4>
-                  <p style="text-align:left;">
-                    <img src="https://www.vectorlogo.zone/logos/pocoo_flask/pocoo_flask-ar21.svg" alt="vectorlogo.zone">
-                    <img src="https://www.vectorlogo.zone/logos/djangoproject/djangoproject-ar21.svg" alt="vectorlogo.zone">
-                    <img src="https://www.vectorlogo.zone/logos/nodejs/nodejs-horizontal.svg" alt="vectorlogo.zone">
-                    <img src="https://www.vectorlogo.zone/logos/getbootstrap/getbootstrap-ar21.svg" alt="vectorlogo.zone">
-                    <img src="https://www.vectorlogo.zone/logos/tensorflow/tensorflow-ar21.svg" alt="vectorlogo.zone">
-                    <img src="https://www.vectorlogo.zone/logos/pytorch/pytorch-ar21.svg" alt="vectorlogo.zone">
-                    <img src="https://www.vectorlogo.zone/logos/opencv/opencv-ar21.svg" alt="vectorlogo.zone">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" alt="upload.wikimedia.org" width="90" height="70">
-                </p>
-            </div>
-            <div class="col-md-12 mt-4 mt-md-0 icon-box" data-aos="lefade-up" data-aos-delay="100" style="background:#fff">
-                <h4 style="text-align:left;color:#09203a">Tools</h4>
-                  <p style="text-align:left;">
-                    <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-ar21.svg" alt="vectorlogo.zone">
-                    <img src="https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-ar21.svg" alt="vectorlogo.zone">
-                    <img src="https://www.vectorlogo.zone/logos/google_cloud/google_cloud-ar21.svg" alt="vectorlogo.zone">
-                    <img src="https://www.vectorlogo.zone/logos/heroku/heroku-ar21.svg" alt="vectorlogo.zone">
-                    <img src="https://www.vectorlogo.zone/logos/jupyter/jupyter-ar21.svg" alt="vectorlogo.zone">
-                </p>
-            </div>
+        <div class="exp-body">
+          <div class="exp-body-inner">
+            <ul class="exp-pts">
+              <li>Heading Customer Experience department — driving NPS and process management, leading a team of 16</li>
+              <li>Driving day-to-day clinic operations across 65+ clinics PAN India</li>
+              <li>Leading Training department for CX agents, Business Development, and Clinic Operations teams</li>
+              <li>Derived strategy for improving App performance and driving AI-enabled projects with measurable impact</li>
+              <li>Identifying new revenue funnels and improving repeat rate to grow business</li>
+              <li>Improving service denial at clinics and boosting overall clinical efficiency</li>
+            </ul>
+            <div class="exp-award">⭐ Founder's Office — AI & Strategy</div>
           </div>
         </div>
       </div>
-    </section>
-  
-    <!-- End Skills Section -->
-  
-  
-  
-  
-    <!-- Start Links section -->
-    <section id="links" class="services">
-      <div class="container">
-        <div class="section-title">
-          <h2>Resume & Links</h2>
-        </div>
-        <div class="row">
-          <div class="col-md-3 mt-4 mt-md-0 icon-box" data-aos="fade-up" data-aos-delay="100">
-            <a href="https://drive.google.com/file/d/1tkGH3ArJ3rx8_4Bpbh1d5zpqNbZUnccZ/view?usp=sharing" target="_blank"><div class="icon"><i class="icofont-page"></i></div></a>
-            <h4 class="title"><a href="https://drive.google.com/file/d/1tkGH3ArJ3rx8_4Bpbh1d5zpqNbZUnccZ/view?usp=sharing" target="_blank">Resume</a></h4>
-            <p class="description" style="color:#fff;">The link contains downloadable resume</p>
-          </div>
-          <div class="col-md-3 mt-4 mt-md-0 icon-box" data-aos="fade-up">
-            <a href="https://github.com/rajattiwari01/LeetCode_Problems" target="_blank"><div class="icon"><i class="icofont-link"></i></div></a>
-            <h4 class="title"><a href="https://github.com/rajattiwari01/LeetCode_Problems" target="_blank">LeetCode Repository</a></h4>
-            <p class="description" style="color:#fff;"> The github repository contains leetcode problems solution in python.</p>
-          </div>
-          <!-- <div class="col-md-3 mt-4 mt-md-0 icon-box" data-aos="fade-up" data-aos-delay="100">
-            <a href="https://techingenious.herokuapp.com/" target="_blank"><div class="icon"><i class="icofont-page"></i></div></a>
-            <h4 class="title"><a href="https://techingenious.herokuapp.com/" target="_blank">Blog</a></h4>
-            <p class="description" style="color:#fff;">Blog containing articles on AI, coding, development</p>
-          </div> -->
-        </div>
-      </div>
-    </section> <!--End Links Section -->
-  
-  
-    <!-- Start Contact Section -->
-  
-    <section id="contacts" class="contact">
-      <div class="container">
-  
-        <div class="section-title">
-          <h2>Contact</h2>
-        </div>
-  
-        <div class="row mt-2">
-  
-          <div class="col-md-6 d-flex align-items-stretch">
-            <div class="info-box">
-              <i class="bx bx-map"></i>
-              <h3>My Address</h3>
-              <p>Rudrapur</p>
-              <p>Udham Singh Nagar,Uttarakhand</p>
-              <p>India, 263153</p>
-            </div>
-          </div>
-  
-          <div class="col-md-6 mt-4 mt-md-0 d-flex align-items-stretch">
-            <div class="info-box">
-              <i class="bx bx-share-alt"></i>
-              <h3>Social Profiles</h3>
-              <div class="social-links">
-                <a href="https://www.linkedin.com/in/rajattiwari01" target="_blank" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-                <a href="https://www.github.com/rajattiwari01" target="_blank" class="github"><i class="bx bxl-github"></i></a>
-                <a href="mailto:rajattiwari785@gmail.com" target="_blank" class="google"><i class="bx bxl-google"></i></a>
-  
+
+      <!-- Snapdeal -->
+      <div class="exp-card reveal">
+        <div class="exp-head" onclick="tog(this)">
+          <div class="exp-left">
+            <div class="exp-logo snap">🛒</div>
+            <div>
+              <div class="exp-co">Snapdeal</div>
+              <div class="exp-role">Assistant Program Manager — Growth, Strategy & New Initiatives</div>
+              <div class="exp-badges">
+                <span class="ebadge ebadge-dur">Jan 2025 – Aug 2025</span>
+                <span class="ebadge ebadge-type">7 Months · Full-Time</span>
               </div>
             </div>
           </div>
-  
-          <div class="col-md-6 mt-4 d-flex align-items-stretch">
-            <div class="info-box">
-              <i class="bx bx-envelope"></i>
-              <h3>Email</h3>
-              <p>rajattiwari785@gmail.com</p>
-              <p>rajattiwariirt@gmail.com</p>
-            </div>
-          </div>
-          <div class="col-md-6 mt-4 d-flex align-items-stretch">
-            <div class="info-box">
-              <i class="bx bx-phone-call"></i>
-              <h3>Contact</h3>
-              <p>+91-8273004988</p>
-            </div>
+          <div class="exp-toggle">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
           </div>
         </div>
-        <!-- <div id="sfczmlqxr5caww28rswrt8849ghbekgnh3j" ></div><script type="text/javascript" src="https://counter1.stat.ovh/private/counter.js?c=zmlqxr5caww28rswrt8849ghbekgnh3j&down=async" async></script><noscript><a href="https://www.freecounterstat.com" title="free web counter"><img src="https://counter1.stat.ovh/private/freecounterstat.php?c=zmlqxr5caww28rswrt8849ghbekgnh3j" border="0" title="free web counter" alt="free web counter" style="visibility: none;"></a></noscript> -->
+        <div class="exp-body">
+          <div class="exp-body-inner">
+            <ul class="exp-pts">
+              <li>Spearheaded vendor onboarding for the business category — onboarded ~1,500 sellers within 3 months</li>
+              <li>Secured monetization for expiring ROs valued at ₹4 Crores, contributing directly to revenue growth</li>
+              <li>Achieved measurable reduction in Return to Origin (RTO) rates, improving operational efficiency</li>
+              <li>Designed supply chain frameworks from scratch for the business vertical</li>
+              <li>Managed Home Page design, display feeds, and seller panel product development & data migrations</li>
+            </ul>
+          </div>
+        </div>
       </div>
-    </section>
-  
-    <!-- End Contact Section -->
-  
-    <!-- Vendor JS Files -->
-    <script src="assets/vendor/jquery/jquery.min.js"></script>
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
-    <script src="assets/vendor/php-email-form/validate.js"></script>
-    <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
-    <script src="assets/vendor/counterup/counterup.min.js"></script>
-    <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
-    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="assets/vendor/venobox/venobox.min.js"></script>
-    <script src="assets/vendor/typed.js/typed.min.js"></script>
-    <script type="text/javascript">
-      var typed = new Typed('.typing',{
-        strings: ["Coder", "Developer", "AI Enthusiast"],
-        loop: true,
-        typeSpeed: 65,
-        backSpeed: 65
-      });
-    </script>
-  
-    <!-- Template Main JS File -->
-    <script src="assets/js/main.js"></script>
-  
-  </body>
-  
-  </html>
-  
+
+      <!-- Tata 1mg Senior -->
+      <div class="exp-card reveal">
+        <div class="exp-head" onclick="tog(this)">
+          <div class="exp-left">
+            <div class="exp-logo tata">💊</div>
+            <div>
+              <div class="exp-co">TATA 1mg</div>
+              <div class="exp-role">Senior Executive — Program Management & Process Excellence</div>
+              <div class="exp-badges">
+                <span class="ebadge ebadge-dur">Oct 2023 – Jan 2025</span>
+                <span class="ebadge ebadge-type">15 Months · Full-Time</span>
+              </div>
+            </div>
+          </div>
+          <div class="exp-toggle">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </div>
+        </div>
+        <div class="exp-body">
+          <div class="exp-body-inner">
+            <ul class="exp-pts">
+              <li>Led end-to-end expansion of 250 retail stores — coordinating Real Estate, Execution, Design, Central Ops & Ground staff</li>
+              <li>Built the Weight Management Program (NewU) from ground up — attracted 10,000+ customers</li>
+              <li>Managed corporate wellness programs for TCS, Air India, Starbucks, Tata Digital, Ramboll — drove 30% business growth</li>
+              <li>Revamped main app search — 80% efficiency gain, 95% accuracy for 1M+ daily searches</li>
+              <li>Automated vendor onboarding and QA processes — saved 80+ man-hours and reduced costs</li>
+              <li>Increased monthly retail sales 12% through SKU availability model; modernized inventory by 14%</li>
+              <li>Spearheaded game development for L&D team — boosted team competency by 70%</li>
+              <li>Analysed CO2 emission index and led sustainability initiatives to reduce emissions</li>
+            </ul>
+            <div class="exp-award">🏆 Best Innovator at Work Award · July 2023</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tata 1mg Executive -->
+      <div class="exp-card reveal">
+        <div class="exp-head" onclick="tog(this)">
+          <div class="exp-left">
+            <div class="exp-logo tata">💊</div>
+            <div>
+              <div class="exp-co">TATA 1mg</div>
+              <div class="exp-role">Executive — Program Management & Process Excellence</div>
+              <div class="exp-badges">
+                <span class="ebadge ebadge-dur">Nov 2022 – Oct 2023</span>
+                <span class="ebadge ebadge-type">11 Months · Full-Time</span>
+              </div>
+            </div>
+          </div>
+          <div class="exp-toggle">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </div>
+        </div>
+        <div class="exp-body">
+          <div class="exp-body-inner">
+            <ul class="exp-pts">
+              <li>Designed and implemented end-to-end retail product — boosted operational efficiency and drove 8% revenue increase</li>
+              <li>Built AyurPersona: automated Dosha analyzer & Ayurvedic product suggestion tool — saved ~₹2 Lac</li>
+              <li>Developed one-click merchandising monetization tool — increased initial adherence by 40%</li>
+              <li>Built QR-embedded feedback system for multiple hospitals — collected 2 lakh data points in 8 months</li>
+              <li>Programmed Reverse Mile & Middle Mile delivery process — reduced bandwidth by ~50%</li>
+            </ul>
+            <div class="exp-award">🏆 Performer Award · March 2023</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Internship -->
+      <div class="exp-card reveal">
+        <div class="exp-head" onclick="tog(this)">
+          <div class="exp-left">
+            <div class="exp-logo intern">🎓</div>
+            <div>
+              <div class="exp-co">TATA 1mg</div>
+              <div class="exp-role">Internship — Retail Expansion & AI / ML</div>
+              <div class="exp-badges">
+                <span class="ebadge ebadge-dur">Jul 2022 – Nov 2022</span>
+                <span class="ebadge ebadge-type">4 Months · Internship</span>
+              </div>
+            </div>
+          </div>
+          <div class="exp-toggle">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1 6h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </div>
+        </div>
+        <div class="exp-body">
+          <div class="exp-body-inner">
+            <ul class="exp-pts">
+              <li>Managed retail expansion of 50 stores from scouting to business streamlining, coordinating multiple stakeholders</li>
+              <li>Created AI/ML model for footfall counter with face, gender & age detection — deployed to improve sales</li>
+              <li>Built voice analysis model for customer feedback — generated 2 lakh lines of actionable data</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT -->
+<section class="section" id="impact">
+  <div class="wrap">
+    <div class="stag">Impact & Achievements</div>
+    <h2 class="sh2">Numbers That<br><em>Tell the Story</em></h2>
+    <div class="imp-grid">
+      <div class="imp-card reveal"><div class="imp-n"><span>₹</span>4 Cr</div><div class="imp-t">Revenue Secured</div><div class="imp-d">Monetized expiring ROs at Snapdeal, directly contributing to the company's revenue pipeline.</div><div class="imp-s">Snapdeal · 2025</div></div>
+      <div class="imp-card reveal"><div class="imp-n">30<span>%</span></div><div class="imp-t">Corporate Wellness Growth</div><div class="imp-d">Drove 30% business growth managing wellness programs for TCS, Air India, Starbucks, Tata Digital & Ramboll.</div><div class="imp-s">TATA 1mg · 2024</div></div>
+      <div class="imp-card reveal"><div class="imp-n">10<span>K+</span></div><div class="imp-t">Customers Acquired</div><div class="imp-d">Built Weight Management Program from zero — attracted 10,000+ customers through strategic initiatives.</div><div class="imp-s">TATA 1mg · 2024</div></div>
+      <div class="imp-card reveal"><div class="imp-n">95<span>%</span></div><div class="imp-t">App Search Accuracy</div><div class="imp-d">Revamped app search — 80% efficiency gain, 95% accuracy for over 1 million daily searches.</div><div class="imp-s">TATA 1mg · 2024</div></div>
+      <div class="imp-card reveal"><div class="imp-n">2<span>L+</span></div><div class="imp-t">Customer Feedbacks</div><div class="imp-d">QR-embedded feedback system across multiple hospitals — 2 lakh data points collected in 8 months.</div><div class="imp-s">TATA 1mg · 2023</div></div>
+      <div class="imp-card reveal"><div class="imp-n">#<span>1</span></div><div class="imp-t">Branch Rank — B.Tech</div><div class="imp-d">Graduated first in the ECE branch at BTKIT Almora with 80.4% CGPA. Merit scholarship for 3 consecutive years.</div><div class="imp-s">BTKIT Almora · 2022</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="section" id="skills">
+  <div class="wrap">
+    <div class="stag">Skills & Expertise</div>
+    <h2 class="sh2">What I<br><em>Bring to the Table</em></h2>
+    <div class="sk-groups reveal">
+      <div>
+        <div class="sk-g-title">Management & Strategy</div>
+        <div class="sk-pills">
+          <span class="pill">Program Management</span><span class="pill">Product Management</span><span class="pill">Strategic Thinking</span><span class="pill">Stakeholder Management</span><span class="pill">Risk Management</span><span class="pill">Pipeline Planning</span><span class="pill">Team Leadership</span><span class="pill">Business Intelligence</span>
+        </div>
+      </div>
+      <div>
+        <div class="sk-g-title">Operations & CX</div>
+        <div class="sk-pills">
+          <span class="pill">Process Excellence / Automation</span><span class="pill">Supply Chain Management</span><span class="pill">Inventory Management</span><span class="pill">Customer Experience</span><span class="pill">Consumer Behavior</span><span class="pill">Marketing Research</span><span class="pill">Web Analytics</span>
+        </div>
+      </div>
+      <div>
+        <div class="sk-g-title">Technical</div>
+        <div class="sk-pills">
+          <span class="pill">Python</span><span class="pill">Data Analysis</span><span class="pill">Machine Learning / AI</span><span class="pill">Advanced Excel</span><span class="pill">AppScript</span><span class="pill">JIRA / Agile</span><span class="pill">JavaScript</span><span class="pill">Web Development</span><span class="pill">SDLC</span><span class="pill">Product Road Mapping</span><span class="pill">E-commerce</span><span class="pill">Data Science</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="section" id="education">
+  <div class="wrap">
+    <div class="stag">Education</div>
+    <h2 class="sh2">Academic<br><em>Foundation</em></h2>
+    <div class="edu-grid">
+      <div class="edu-card reveal">
+        <div class="edu-yr">2022</div>
+        <div class="edu-deg">B.Tech — Electronics & Communication Engineering</div>
+        <div class="edu-inst">BT Kumaon Institute of Technology, Almora<br>Uttarakhand Technical University</div>
+        <div class="edu-score">80.4%</div>
+        <div><span class="edu-badge">🥇 Rank 1 in Branch · Merit Scholar (3 Years)</span></div>
+      </div>
+      <div class="edu-card reveal">
+        <div class="edu-yr">2018</div>
+        <div class="edu-deg">Class XII — Science (CBSE)</div>
+        <div class="edu-inst">RAN Public School, Rudrapur<br>Central Board of Secondary Education</div>
+        <div class="edu-score">89.6%</div>
+      </div>
+      <div class="edu-card reveal">
+        <div class="edu-yr">2016</div>
+        <div class="edu-deg">Class X (CBSE)</div>
+        <div class="edu-inst">RAN Public School, Rudrapur<br>Central Board of Secondary Education</div>
+        <div class="edu-score">10.0 CGPA</div>
+        <div><span class="edu-badge">✨ Perfect Score</span></div>
+      </div>
+    </div>
+
+    <div style="margin-top:48px">
+      <div class="stag" style="margin-bottom:20px">Certifications & Achievements</div>
+      <div class="cert-grid">
+        <div class="cert reveal">
+          <div class="cert-ico">🥇</div>
+          <div><div class="cert-n">NPTEL Data Science — Gold Medalist</div><div class="cert-yr">2022 · National Programme on Technology Enhanced Learning</div></div>
+        </div>
+        <div class="cert reveal">
+          <div class="cert-ico">💻</div>
+          <div><div class="cert-n">TCS NQT — 90% Score</div><div class="cert-yr">2021 · Tata Consultancy Services National Qualifier Test</div></div>
+        </div>
+        <div class="cert reveal">
+          <div class="cert-ico">📄</div>
+          <div><div class="cert-n">Research Paper — Parallel Programming in Image Segmentation</div><div class="cert-yr">2021 · Published Research</div></div>
+        </div>
+        <div class="cert reveal">
+          <div class="cert-ico">🌐</div>
+          <div><div class="cert-n">Intel-Adlink Hackathon — Global Rank 4th</div><div class="cert-yr">2020 · HackerEarth Platform</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section" id="projects">
+  <div class="wrap">
+    <div class="stag">Technical Projects</div>
+    <h2 class="sh2">Building Things<br><em>That Work</em></h2>
+    <div class="proj-grid">
+      <div class="proj-card reveal">
+        <div class="proj-tag">Intel OpenVINO · ML · Python</div>
+        <div class="proj-n">Smart Retail Analytics</div>
+        <div class="proj-d">Multi-track ML models for retail and warehouse operations using Intel OpenVINO — enabling real-time automated billing and operational intelligence through computer vision pipelines built entirely in Python.</div>
+      </div>
+      <div class="proj-card reveal">
+        <div class="proj-tag">YOLO v7 · Computer Vision</div>
+        <div class="proj-n">Traffic Signal Violation Detection</div>
+        <div class="proj-d">ML-powered image extraction system using YOLO v7 for real-time detection of traffic rule violators — maps vehicle positions and automatically reads number plates of offending cars with high accuracy.</div>
+      </div>
+      <div class="proj-card reveal">
+        <div class="proj-tag">AI/ML · Face Detection · Retail</div>
+        <div class="proj-n">AI Footfall Counter — TATA 1mg</div>
+        <div class="proj-d">Built during internship — an AI/ML model integrating face, gender and age detection to analyze retail footfall in real time. Deployed across 50 stores to improve sales intelligence and customer profiling.</div>
+      </div>
+      <div class="proj-card reveal">
+        <div class="proj-tag">NLP · Ayurveda · Product</div>
+        <div class="proj-n">AyurPersona — Dosha Analyzer</div>
+        <div class="proj-d">Automated Dosha analysis and Ayurvedic product recommendation engine built for TATA 1mg. Saved approximately ₹2 Lac in operational costs and significantly improved customer engagement and personalization.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEADERSHIP -->
+<section class="section" id="leadership">
+  <div class="wrap">
+    <div class="stag">Leadership & Positions</div>
+    <h2 class="sh2">Beyond Work —<br><em>Leading & Giving Back</em></h2>
+    <div class="lead-grid">
+      <div class="lead-card reveal">
+        <div class="lead-top">
+          <div class="lead-ico">🏛️</div>
+          <div>
+            <div class="lead-role">Chairperson</div>
+            <div class="lead-org">IEEE BTKIT Student Chapter</div>
+          </div>
+        </div>
+        <ul class="lead-pts">
+          <li>Managed university-student relations and engagements with a 6-person team</li>
+          <li>Led development of Student Branch — organised 25+ webinars, seminars & workshops</li>
+          <li>Presented research papers to IEEE UP Section</li>
+        </ul>
+        <div class="lead-yr">2019 – 2022</div>
+      </div>
+      <div class="lead-card reveal">
+        <div class="lead-top">
+          <div class="lead-ico">⚡</div>
+          <div>
+            <div class="lead-role">Activity Chair</div>
+            <div class="lead-org">IEEE UP Section</div>
+          </div>
+        </div>
+        <ul class="lead-pts">
+          <li>Led 10-member team of the Computer Society of India student chapter, BTKIT</li>
+          <li>Scheduled 2 inter-college and state-level technical symposiums and competitions</li>
+        </ul>
+        <div class="lead-yr">2020 – 2021</div>
+      </div>
+      <div class="lead-card reveal">
+        <div class="lead-top">
+          <div class="lead-ico">🌏</div>
+          <div>
+            <div class="lead-role">Regional Head</div>
+            <div class="lead-org">IEEE MOV India</div>
+          </div>
+        </div>
+        <ul class="lead-pts">
+          <li>Led a team of 200+ members handling treasury, sponsorship, publicity & regional affairs</li>
+          <li>Coordinated cultural fests and regional competitions across institutions</li>
+        </ul>
+        <div class="lead-yr">2020 – 2021</div>
+      </div>
+      <div class="lead-card reveal">
+        <div class="lead-top">
+          <div class="lead-ico">❤️</div>
+          <div>
+            <div class="lead-role">Founding Member</div>
+            <div class="lead-org">NGO Unnati Foundation</div>
+          </div>
+        </div>
+        <ul class="lead-pts">
+          <li>Helped 1,000+ underprivileged children access quality education and books</li>
+          <li>Active contributor from inception through present</li>
+        </ul>
+        <div class="lead-yr">2016 – Present</div>
+      </div>
+      <div class="lead-card reveal">
+        <div class="lead-top">
+          <div class="lead-ico">🎓</div>
+          <div>
+            <div class="lead-role">Research & Technical Internships</div>
+            <div class="lead-org">IIT Hyderabad · IIT Kanpur · IIT Roorkee</div>
+          </div>
+        </div>
+        <ul class="lead-pts">
+          <li>Research Intern — IIT Hyderabad (2019)</li>
+          <li>Java Trainee — IIT Kanpur (2019)</li>
+          <li>Wireless Communication Intern — IIT Roorkee (2022)</li>
+        </ul>
+        <div class="lead-yr">2019 – 2022</div>
+      </div>
+      <div class="lead-card reveal">
+        <div class="lead-top">
+          <div class="lead-ico">🎯</div>
+          <div>
+            <div class="lead-role">Interests & Hobbies</div>
+            <div class="lead-org">Life Beyond the Office</div>
+          </div>
+        </div>
+        <ul class="lead-pts">
+          <li>🏓 Table Tennis — competitive recreational player</li>
+          <li>📷 Photography — travel & street photography</li>
+          <li>✈️ Travelling — cultural exploration & adventures</li>
+        </ul>
+        <div class="lead-yr">Always</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-wrap">
+    <div class="footer-top">
+      <div>
+        <div class="footer-n">Rajat <span>Tiwari</span></div>
+        <div class="footer-sub">Lead Program Manager · Founder's Office · New Delhi, India</div>
+        <div class="footer-links">
+          <a class="flink" href="mailto:rajattiwari785@gmail.com">
+            <span class="flink-ico"><svg class="ico-svg" style="width:13px;height:13px;stroke:rgba(255,255,255,.5)" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg></span>
+            rajattiwari785@gmail.com
+          </a>
+          <a class="flink" href="tel:+918273004988">
+            <span class="flink-ico"><svg class="ico-svg" style="width:13px;height:13px;stroke:rgba(255,255,255,.5)" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.68 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.59 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.06 6.06l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+            +91-8273004988
+          </a>
+          <a class="flink" href="https://linkedin.com/in/rajattiwari01" target="_blank">
+            <span class="flink-ico"><svg class="ico-svg" style="width:13px;height:13px;stroke:rgba(255,255,255,.5)" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></span>
+            linkedin.com/in/rajattiwari01
+          </a>
+        </div>
+      </div>
+      <div class="footer-right">
+        <p>Open to full-time roles,<br>consulting & strategy projects</p>
+        <a class="footer-btn" href="mailto:rajattiwari785@gmail.com">Let's Talk →</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Rajat Tiwari · Founder's Office Portfolio</p>
+      <p>Program Management · CX · Growth · Strategy</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Nav stuck
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('stuck',scrollY>10));
+
+// Mobile menu
+const ham=document.getElementById('ham'),mob=document.getElementById('mob');
+ham.addEventListener('click',()=>mob.classList.toggle('on'));
+function cm(){mob.classList.remove('on')}
+
+// Accordion
+function tog(head){
+  const card=head.closest('.exp-card');
+  const open=card.classList.contains('open');
+  document.querySelectorAll('.exp-card').forEach(c=>c.classList.remove('open'));
+  if(!open) card.classList.add('open');
+}
+
+// Scroll reveal
+const io=new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting){
+      setTimeout(()=>e.target.classList.add('on'),+(e.target.dataset.d||0));
+      io.unobserve(e.target);
+    }
+  });
+},{threshold:0.1});
+document.querySelectorAll('.reveal,.imp-card,.edu-card,.cert,.proj-card,.lead-card').forEach((el,i)=>{
+  el.dataset.d=(i%4)*90;
+  io.observe(el);
+});
+</script>
+</body>
+</html>
